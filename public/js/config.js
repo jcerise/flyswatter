@@ -14,6 +14,18 @@ window.app.config(['$routeProvider',
         when('/articles/:articleId', {
             templateUrl: 'views/articles/view.html'
         }).
+        when('/projects', {
+            templateUrl: 'views/projects/list.html'
+        }).
+        when('/projects/create', {
+            templateUrl: 'views/projects/create,html'
+        }).
+        when('/projects/:projectId/edit', {
+            temaplteUrl: 'views/projects/edit.html'
+        }).
+        when('projects/:projectId', {
+            templateUrl: 'views/projects/view.html'
+        }).
         when('/', {
             templateUrl: 'views/index.html'
         }).
