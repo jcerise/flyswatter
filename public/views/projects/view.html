@@ -1,0 +1,6 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+    <span>{{project.created | date:'medium'}}</span> /
+    <span>{{project.owner.name}}</span>
+    <h2>{{project.title}} <a data-ng-show="global.user._id == project.user._id" href="/#!/projects/{{project._id}}/edit">edit</a></h2>
+    <div>{{project.description}}</div>
+</section>

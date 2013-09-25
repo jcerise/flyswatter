@@ -78,7 +78,7 @@ module.exports = function(app, passport, auth) {
     app.get('/projects', projects.all);
     app.post('/projects', auth.requiresLogin, projects.create);
     app.get('/projects/:projectId', projects.show);
-    app.put('/projects/:projectId', auth.requiresLogin, projects.update);
+    app.put('/projects/:projectId', auth.requiresLogin,  projects.update);
     app.del('/projects/:projectId', auth.requiresLogin, projects.destroy);
 
     //Set up a project ID param

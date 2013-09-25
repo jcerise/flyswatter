@@ -1,0 +1,31 @@
+<section data-ng-controller="ProjectsController" data-ng-init="findOne()">
+    <form class="form-horizontal" data-ng-submit="update()">
+        <div class="control-group">
+            <label class="control-label" for="title">Project Title</label>
+            <div class="controls">
+                <input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="title">Project Status</label>
+            <div class="controls">
+                <select data-ng-model="status" id="status" required>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="pending">Pending</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="description">Project Description</label>
+            <div class="controls">
+                <textarea data-ng-model="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input type="submit" class="btn">
+            </div>
+        </div>
+    </form>
+</section>

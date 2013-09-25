@@ -75,8 +75,9 @@ exports.show = function(req, res) {
 /**
  * List all projects
  */
-exports.list = function(req, res) {
-  Project.find().sort('-created').populate('owner').exec(function(err, projects) {
+exports.all = function(req, res) {
+  Project.find().sort('-created').populate('user').exec(function(err, projects) {
+    console.log(projects);
     if (err) {
       res.render('error', {
         status: 500
