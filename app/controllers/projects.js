@@ -70,7 +70,7 @@ exports.destroy = function(req, res) {
  */
 exports.show = function(req, res) {
   res.jsonp(req.project);
-}
+};
 
 /**
  * List all projects
