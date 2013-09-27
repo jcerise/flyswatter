@@ -3,13 +3,13 @@
         <div class="control-group">
             <label class="control-label" for="title">Project Title</label>
             <div class="controls">
-                <input type="text" data-ng-model="title" id="title" placeholder="Title" required>
+                <input type="text" data-ng-model="project.title" id="title" placeholder="Title" required>
             </div>
         </div>
         <div class="control-group">
             <label class="control-label" for="title">Project Status</label>
             <div class="controls">
-                <select data-ng-model="status" id="status" required>
+                <select data-ng-model="project.status" id="status" required>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                     <option value="pending">Pending</option>
@@ -19,7 +19,7 @@
         <div class="control-group">
             <label class="control-label" for="description">Project Description</label>
             <div class="controls">
-                <textarea data-ng-model="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                <textarea data-ng-model="project.description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
             </div>
         </div>
         <div class="control-group">

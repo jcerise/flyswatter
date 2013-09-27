@@ -38,7 +38,7 @@ ProjectSchema.statics = {
   load: function(id, cb) {
     this.findOne({
       _id: id
-    }).populate('user').exec(cb);
+    }).populate('owner').exec(cb);
   }
 };
 

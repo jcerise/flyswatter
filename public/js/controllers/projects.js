@@ -41,6 +41,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
     $scope.find = function(query) {
       Projects.query(query, function(projects) {
         $scope.projects = projects;
+        console.log(projects);
       });
     };
 
