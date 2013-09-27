@@ -1,6 +1,6 @@
 //Projects service used for projects REST endpoint
 angular.module('mean.articles').factory("Projects", ['$resource', function($resource) {
-  var resource = $resource('projects/:projectId', {
+  return $resource('projects/:projectId', {
     projectId: '@_id'
   }, {
     update: {
@@ -11,5 +11,4 @@ angular.module('mean.articles').factory("Projects", ['$resource', function($reso
       isArray: true
     }
   });
-  return resource;
 }]);

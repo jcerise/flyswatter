@@ -77,7 +77,6 @@ exports.show = function(req, res) {
  */
 exports.all = function(req, res) {
   Project.find().sort('-created').populate('user').exec(function(err, projects) {
-    console.log(projects);
     if (err) {
       res.render('error', {
         status: 500

@@ -23,7 +23,7 @@ window.app.config(['$routeProvider',
         when('/projects/:projectId/edit', {
             temaplteUrl: 'views/projects/edit.html'
         }).
-        when('projects/:projectId', {
+        when('/projects/:projectId', {
             templateUrl: 'views/projects/view.html'
         }).
         when('/', {
