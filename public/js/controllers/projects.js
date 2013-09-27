@@ -5,6 +5,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
     $scope.create = function() {
       var project = new Projects({
         title: this.title,
+        summary: this.summary,
         description: this.description,
         status: this.status
       });

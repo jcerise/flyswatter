@@ -38,3 +38,20 @@ footer p {
 .btn-toolbar {
     text-align: center;
 }
+
+/* Project List */
+h3.project-list-title {
+    margin-bottom: -10px;
+}
+
+.project-list-info {
+    font-style: italic;
+}
+
+ul.projects li {
+    padding: 10px;
+}
+
+ul.projects li.even {
+    background-color:#FEF6E4;
+}
