@@ -7,6 +7,5 @@ angular.module('mean.articles').factory("Articles", ['$resource', function($reso
             method: 'PUT'
         }
     });
-  console.log(resource);
   return resource
 }]);

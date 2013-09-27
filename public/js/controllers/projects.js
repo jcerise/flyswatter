@@ -38,16 +38,13 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       });
     };
 
-    $scope.find = function() {
-      Projects.get({
-        projectId: $routeParams.projectId
-      }, function(project) {
-        $scope.projects = project;
+    $scope.find = function(query) {
+      Projects.query(query, function(projects) {
+        $scope.projects = projects;
       });
     };
 
     $scope.findOne = function() {
-      console.log('route-params: ' + $routeParams.projectId);
       Projects.get({
         projectId: $routeParams.projectId
       }, function(project) {
