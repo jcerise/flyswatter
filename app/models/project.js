@@ -17,6 +17,10 @@ var ProjectSchema = new Schema({
       type: String,
       default: ''
     },
+    summary: {
+      type: String,
+      default: ''
+    },
     description: {
       type: String,
       default: ''

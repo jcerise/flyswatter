@@ -1,10 +1,10 @@
 <section data-ng-controller="ProjectsController" data-ng-init="find()">
+    <h2>Projects</h2>
     <ul class="projects unstyled">
         <li data-ng-repeat="project in projects">
-            <span>{{project.created | date:'medium'}}</span> /
-            <span>{{project.owner.name}}</span>
-            <h2><a data-ng-href="#!/projects/{{project._id}}">{{project.title}}</a></h2>
-            <div>{{project.description}}</div>
+            <h3><a data-ng-href="#!/projects/{{project._id}}">{{project.title}}</a></h3>
+            <span class="project-lit-info">Created on: {{ project.created | date:'medium' }} by {{ project.owner.name }}</span>
+            <div class="project-list-summary">{{project.description}}</div>
         </li>
     </ul>
     <h1 data-ng-hide="!projects || projects.length">No Projects yet. <br> Why don't you <a href="/#!/projects/create">Create One</a>?</h1>

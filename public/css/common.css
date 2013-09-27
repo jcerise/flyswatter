@@ -8,6 +8,7 @@
 }
 
 .front-body,
+.container,
 .navbar-inner .container {
     width: 960px;
 }
