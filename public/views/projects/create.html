@@ -1,4 +1,4 @@
-<section data-ng-controller="ProjectsController">
+<section data-ng-controller="ProjectsController" data-ng-init="findUsers()">
     <form class="form-horizontal" data-ng-submit="create()">
         <div class="control-group">
             <label class="control-label" for="title">Project Title</label>
@@ -13,6 +13,13 @@
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                     <option value="pending">Pending</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="members">Project Members</label>
+            <div class="controls">
+                <select multiple data-ng-model="members" ng-options="u._id as u.name for u in users" id="members">
                 </select>
             </div>
         </div>

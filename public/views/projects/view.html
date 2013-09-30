@@ -4,4 +4,7 @@
     <span>{{project.created | date:'medium'}}</span> /
     <span>{{project.owner.name}}</span>
     <div>{{project.description}}</div>
+    <div class="project-list-members">
+        Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member }}</span>
+    </div>
 </section>

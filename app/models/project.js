@@ -32,6 +32,10 @@ var ProjectSchema = new Schema({
     owner: {
       type: Schema.ObjectId,
       ref: 'User'
+    },
+    members: {
+      type: [Schema.ObjectId],
+      ref: 'User'
     }
 });
 
@@ -42,7 +46,8 @@ ProjectSchema.statics = {
   load: function(id, cb) {
     this.findOne({
       _id: id
-    }).populate('owner').exec(cb);
+    }).populate('owner')
+      .exec(cb);
   }
 };
 

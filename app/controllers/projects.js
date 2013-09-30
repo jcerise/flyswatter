@@ -65,12 +65,6 @@ exports.destroy = function(req, res) {
   });
 };
 
-/**
- * Show a project
- */
-exports.show = function(req, res) {
-  res.jsonp(req.project);
-};
 
 /**
  * List all projects

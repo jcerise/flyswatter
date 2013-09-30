@@ -8,6 +8,7 @@ module.exports = function(app, passport, auth) {
     app.get('/signout', users.signout);
 
     //Setting up the users api
+    app.get('/users', auth.requiresLogin, users.all);
     app.post('/users', users.create);
     
     app.post('/users/session', passport.authenticate('local', {

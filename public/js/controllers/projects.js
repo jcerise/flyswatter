@@ -1,13 +1,36 @@
 angular.module('mean.projects').controller('ProjectsController', ['$scope', '$routeParams', '$location', 'Global',
-  'Projects', function($scope, $routeParams, $location, Global, Projects) {
+  'Projects', 'Users', function($scope, $routeParams, $location, Global, Projects, Users) {
     $scope.global = Global;
+
+    //get a list of all users, so users can be associated with this project on creation
+    $scope.findUsers = function(query) {
+      $scope.users = new Array();
+      Users.query(query, function(users) {
+        angular.forEach(users, function (user) {
+          if (user._id != Global.user._id) {
+            $scope.users.push(user);
+          }
+        });
+      });
+    };
+
+    $scope.findMember = function(objectId) {
+      var member = Users.get({
+        userId: objectId,
+        load: true
+      }, function(user) {
+          return user;
+      });
+      return member;
+    };
 
     $scope.create = function() {
       var project = new Projects({
         title: this.title,
         summary: this.summary,
         description: this.description,
-        status: this.status
+        status: this.status,
+        members: this.members
       });
 
       project.$save(function(response) {
