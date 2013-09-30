@@ -5,6 +5,10 @@ angular.module('mean.projects').factory("Projects", ['$resource', function($reso
   }, {
     update: {
       method: 'PUT'
+    },
+    query: {
+      method: 'GET',
+      isArray: true
     }
   });
 }]);
