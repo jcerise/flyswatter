@@ -1,14 +1,30 @@
-<section data-ng-controller="ProjectsController" data-ng-init="find()">
-    <h2>Projects</h2><span><small>(<a href="#">My projects</a> | <a href="#">All Projects</a>)</small></span>
-    <ul class="projects unstyled">
-        <li data-ng-repeat="project in projects" ng-class-even="'even'">
-            <h3 class="project-list-title"><a data-ng-href="#!/projects/{{project._id}}">{{ project.title }}</a></h3>
-            <span class="project-list-info"><small>Created on {{ project.created | date:'short' }}</small></span>
-            <div class="project-list-summary">{{project.summary}}</div>
-            <div class="project-list-members">
-                Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}, </span>
-            </div>
-        </li>
-    </ul>
-    <h1 data-ng-hide="!projects || projects.length">No Projects yet. <br> Why don't you <a href="/#!/projects/create">Create One</a>?</h1>
+<section data-ng-controller="ProjectsController" data-ng-init="findProjects()">
+    <div class="own-projects span5">
+        <h2>My Projects</h2>
+        <ul class="projects unstyled">
+            <li data-ng-repeat="project in ownProjects" ng-class-even="'even'">
+                <h4 class="project-list-title"><a data-ng-href="#!/projects/{{project._id}}">{{ project.title }}</a></h4>
+                <span class="project-list-info"><small>Created on {{ project.created | date:'short' }}</small></span>
+                <div class="project-list-summary">{{project.summary}}</div>
+                <div class="project-list-members">
+                    Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}, </span>
+                </div>
+            </li>
+        </ul>
+        <h1 data-ng-hide="!ownProjects || ownProjects.length">No Projects yet. <br> Why don't you <a href="/#!/projects/create">Create One</a>?</h1>
+    </div>
+    <div class="member-projects span4">
+        <h2>Participating projects</h2>
+        <ul class="projects unstyled">
+            <li data-ng-repeat="project in memberProjects" ng-class-even="'even'">
+                <h4 class="project-list-title"><a data-ng-href="#!/projects/{{project._id}}">{{ project.title }}</a></h4>
+                <span class="project-list-info"><small>Created on {{ project.created | date:'short' }} by {{project.owner.name}}</small></span>
+                <div class="project-list-summary">{{project.summary}}</div>
+                <div class="project-list-members">
+                    Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}, </span>
+                </div>
+            </li>
+        </ul>
+        <h3 data-ng-hide="!memberProjects || memberProjects.length">You are not currently a member in any projects</h3>
+    </div>
 </section>

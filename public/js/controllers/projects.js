@@ -54,34 +54,26 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       });
     };
 
-    $scope.find = function(query) {
+    //Return all projects relevant to the user (created, or particpating in)
+    $scope.findProjects = function(query) {
       Projects.query(query, function(projects) {
-        $scope.projects = [];
+        $scope.ownProjects = [];
+        $scope.memberProjects = [];
         angular.forEach(projects, function (project) {
           //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
           Projects.get({
             projectId: project._id
           }, function(project) {
-            console.log(project);
+            //Check to see if the current user owns the project
             if (project.owner._id == Global.user._id) {
-              $scope.projects.push(project);
+              $scope.ownProjects.push(project);
             }
-          });
-        });
-      });
-    };
-
-    $scope.find = function(query) {
-      Projects.query(query, function(projects) {
-        $scope.projects = [];
-        angular.forEach(projects, function (project) {
-          //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
-          Projects.get({
-            projectId: project._id
-          }, function(project) {
-            if (project.owner._id == Global.user._id) {
-              $scope.projects.push(project);
-            }
+            //Check to see if the current user is a member of the project
+            angular.forEach(project.members, function(member) {
+              if (member._id == Global.user._id) {
+                $scope.memberProjects.push(project);
+              };
+            })
           });
         });
       });
