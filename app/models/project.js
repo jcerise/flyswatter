@@ -43,6 +43,7 @@ var ProjectSchema = new Schema({
  * Statics
  */
 ProjectSchema.statics = {
+  //Populate the user objects for both the owner field, and the array of members
   load: function(id, cb) {
     this.findOne({
       _id: id
