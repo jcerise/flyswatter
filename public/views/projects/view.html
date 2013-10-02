@@ -5,6 +5,6 @@
     <span>{{project.owner.name}}</span>
     <div>{{project.description}}</div>
     <div class="project-list-members">
-        Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member }}</span>
+        Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}, </span>
     </div>
 </section>

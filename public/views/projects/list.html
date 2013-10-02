@@ -6,7 +6,7 @@
             <span class="project-list-info"><small>Created on {{ project.created | date:'short' }}</small></span>
             <div class="project-list-summary">{{project.summary}}</div>
             <div class="project-list-members">
-                Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}</span>
+                Project members:<span data-ng-repeat="member in project.members" class="project-member">{{ member.name }}, </span>
             </div>
         </li>
     </ul>

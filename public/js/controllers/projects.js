@@ -14,16 +14,6 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       });
     };
 
-    $scope.findMember = function(objectId) {
-      var member = Users.get({
-        userId: objectId,
-        load: true
-      }, function(user) {
-          return user;
-      });
-      return member;
-    };
-
     $scope.create = function() {
       var project = new Projects({
         title: this.title,
@@ -34,10 +24,13 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       });
 
       project.$save(function(response) {
+        console.log(response);
         $location.path('projects/' + response._id);
       });
       this.title = '';
       this.description = '';
+      this.summary = '';
+      this.members = '';
       this.status = '';
     };
 
@@ -66,9 +59,15 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       Projects.query(query, function(projects) {
         $scope.projects = new Array();
         angular.forEach(projects, function (project) {
-          if (project.owner == Global.user._id) {
-            $scope.projects.push(project);
-          }
+          //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
+          Projects.get({
+            projectId: project._id
+          }, function(project) {
+            console.log(project);
+            if (project.owner._id == Global.user._id) {
+              $scope.projects.push(project);
+            }
+          });
         });
       });
     };
@@ -78,6 +77,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
         projectId: $routeParams.projectId
       }, function(project) {
         $scope.project = project;
+        console.log(project);
       });
     };
   }]);
