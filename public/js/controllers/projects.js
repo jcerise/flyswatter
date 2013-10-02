@@ -4,7 +4,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
 
     //get a list of all users, so users can be associated with this project on creation
     $scope.findUsers = function(query) {
-      $scope.users = new Array();
+      $scope.users = [];
       Users.query(query, function(users) {
         angular.forEach(users, function (user) {
           if (user._id != Global.user._id) {
@@ -23,7 +23,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
         members: this.members
       });
 
-      project.$save(function(response) {s
+      project.$save(function(response) {
         $location.path('projects/' + response._id);
       });
       this.title = '';
@@ -56,7 +56,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
 
     $scope.find = function(query) {
       Projects.query(query, function(projects) {
-        $scope.projects = new Array();
+        $scope.projects = [];
         angular.forEach(projects, function (project) {
           //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
           Projects.get({
@@ -73,7 +73,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
 
     $scope.find = function(query) {
       Projects.query(query, function(projects) {
-        $scope.projects = new Array();
+        $scope.projects = [];
         angular.forEach(projects, function (project) {
           //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
           Projects.get({
