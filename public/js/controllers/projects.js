@@ -23,8 +23,7 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
         members: this.members
       });
 
-      project.$save(function(response) {
-        console.log(response);
+      project.$save(function(response) {s
         $location.path('projects/' + response._id);
       });
       this.title = '';
@@ -72,12 +71,40 @@ angular.module('mean.projects').controller('ProjectsController', ['$scope', '$ro
       });
     };
 
+    $scope.find = function(query) {
+      Projects.query(query, function(projects) {
+        $scope.projects = new Array();
+        angular.forEach(projects, function (project) {
+          //Fully load each project, so we get the user objects associated with the project, rather than just the IDss
+          Projects.get({
+            projectId: project._id
+          }, function(project) {
+            if (project.owner._id == Global.user._id) {
+              $scope.projects.push(project);
+            }
+          });
+        });
+      });
+    };
+
+    //Create a method specifically for puling data when editing. We do not want to fully load the whole object,
+    //as this screws with the member select functionality.
+    //TODO: Feels hacky, probably a better way to accomplish this
+    $scope.findForEdit = function(query) {
+      Projects.query(query, function(projects) {
+        angular.forEach(projects, function (project) {
+          if (project._id == $routeParams.projectId) {
+            $scope.project = project;
+          }
+        });
+      });
+    };
+
     $scope.findOne = function() {
       Projects.get({
         projectId: $routeParams.projectId
       }, function(project) {
         $scope.project = project;
-        console.log(project);
       });
     };
   }]);

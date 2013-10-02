@@ -1,4 +1,4 @@
-<section data-ng-controller="ProjectsController" data-ng-init="findOne(); findUsers()">
+<section data-ng-controller="ProjectsController" data-ng-init="findForEdit(); findUsers()">
     <form class="form-horizontal" data-ng-submit="update()">
         <div class="control-group">
             <label class="control-label" for="title">Project Title</label>
@@ -19,7 +19,7 @@
         <div class="control-group">
             <label class="control-label" for="members">Project Members</label>
             <div class="controls">
-                <select multiple data-ng-model="project.members" ng-options="u as u.name for u in users" id="members">
+                <select multiple data-ng-model="project.members" ng-options="u._id as u.name for u in users" id="members">
                 </select>
             </div>
         </div>
